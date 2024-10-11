@@ -9,9 +9,9 @@ from load import load_data
 def test_load_data_success(tmp_path):
     # Sample data
     data = {
-        "customer_id": [1, 2],
-        "age": [0.0, 1.0],
-        "balance": [0.0, 1.0]
+        "Customer_id": [1, 2],
+        "Age": [0.0, 1.0],
+        "Balance": [0.0, 1.0]
     }
     df = pd.DataFrame(data)
 

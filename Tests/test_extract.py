@@ -8,10 +8,10 @@ def test_extract_data_success(tmp_path):
     # Create a temporary CSV file
     test_csv = tmp_path / "test_bank_transactions_dataset.csv"
     data = {
-        "customer_id": [1, 2],
-        "age": [30, 45],
-        "transaction_type": ["deposit", "withdrawal"],
-        "balance": [1000.0, 2500.5]
+        "Customer_id": [1, 2],
+        "Age": [30, 45],
+        "Transaction_type": ["deposit", "withdrawal"],
+        "Balance": [1000.0, 2500.5]
     }
     df = pd.DataFrame(data)
     df.to_csv(test_csv, index=False)
@@ -22,7 +22,7 @@ def test_extract_data_success(tmp_path):
     # Assertions
     assert isinstance(extracted_df, pd.DataFrame), "extract_data should return a DataFrame"
     assert not extracted_df.empty, "DataFrame should not be empty"
-    assert list(extracted_df.columns) == ["customer_id", "age", "transaction_type", "balance"], "DataFrame columns mismatch"
+    assert list(extracted_df.columns) == ["Customer_id", "Age", "Transaction_type", "Balance"], "DataFrame columns mismatch"
 
 def test_extract_data_file_not_found():
     # Call the extract_data function with a non-existent file

@@ -4,7 +4,7 @@ from load import load_data
 
 def main():
     # File paths
-    csv_file = '/workspaces/bank-transaction-etl-JayasuryaThirumaran/data/Bank_trasaction.csv'
+    csv_file = 'path of the data'
     db_name = 'etl_database.db'
     table_name = 'cleaned_data'
     

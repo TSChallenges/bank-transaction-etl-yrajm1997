@@ -19,7 +19,7 @@ jobs:
       with:
         test-name: Extract-Test
         setup-command: pip install -r requirements.txt
-        command: pytest test/test_extract
+        command: pytest Tests/test_extract
         timeout: 10
         max-score: 10
     - name: Transform-Test
@@ -28,7 +28,7 @@ jobs:
       with:
         test-name: Transform-Test
         setup-command: pip install -r requirements.txt
-        command: pytest tests/test_transform
+        command: pytest Tests/test_transform
         timeout: 10
         max-score: 10
     - name: Load-Test
@@ -37,7 +37,7 @@ jobs:
       with:
         test-name: Load-Test
         setup-command: pip install -r requirements.txt
-        command: pytest tests/test_load
+        command: pytest Tests/test_load
         timeout: 10
         max-score: 10
     - name: Autograding Reporter

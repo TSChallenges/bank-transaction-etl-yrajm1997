@@ -13,32 +13,38 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
-    - name: test_extract.py
-      id: test_extract-py
-      uses: classroom-resources/autograding-python-grader@v1
+    - name: Extract-Test
+      id: extract-test
+      uses: classroom-resources/autograding-command-grader@v1
       with:
+        test-name: Extract-Test
+        setup-command: pip install -r requirements.txt
+        command: pytest test/test_extract
         timeout: 10
         max-score: 10
-        setup-command: ''
-    - name: Test Transform
-      id: test-transform
-      uses: classroom-resources/autograding-python-grader@v1
+    - name: Transform-Test
+      id: transform-test
+      uses: classroom-resources/autograding-command-grader@v1
       with:
+        test-name: Transform-Test
+        setup-command: pip install -r requirements.txt
+        command: pytest tests/test_transform
         timeout: 10
         max-score: 10
-        setup-command: pip3 install pytest
-    - name: test_load.py
-      id: test_load-py
-      uses: classroom-resources/autograding-python-grader@v1
+    - name: Load-Test
+      id: load-test
+      uses: classroom-resources/autograding-command-grader@v1
       with:
+        test-name: Load-Test
+        setup-command: pip install -r requirements.txt
+        command: pytest tests/test_load
         timeout: 10
         max-score: 10
-        setup-command: ''
     - name: Autograding Reporter
       uses: classroom-resources/autograding-grading-reporter@v1
       env:
-        TEST_EXTRACT-PY_RESULTS: "${{steps.test_extract-py.outputs.result}}"
-        TEST-TRANSFORM_RESULTS: "${{steps.test-transform.outputs.result}}"
-        TEST_LOAD-PY_RESULTS: "${{steps.test_load-py.outputs.result}}"
+        EXTRACT-TEST_RESULTS: "${{steps.extract-test.outputs.result}}"
+        TRANSFORM-TEST_RESULTS: "${{steps.transform-test.outputs.result}}"
+        LOAD-TEST_RESULTS: "${{steps.load-test.outputs.result}}"
       with:
-        runners: test_extract-py,test-transform,test_load-py
+        runners: extract-test,transform-test,load-test
